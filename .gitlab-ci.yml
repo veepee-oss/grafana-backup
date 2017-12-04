@@ -20,9 +20,9 @@ lines-length:
       80 avatar.png
 
 # syntax
-dockerfile-lint:
+docker-lint:
   stage: syntax
   image: vpgrp/linter:docker
   script:
-    - dockerfile-lint Dockerfile
+    - docker-lint Dockerfile
 # EOF
