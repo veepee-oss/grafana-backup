@@ -1,0 +1,28 @@
+---
+stages:
+  - commit
+  - syntax
+
+# commit
+git-history:
+  stage: commit
+  script:
+    - >
+      bash <(curl -s
+      https://gitlab.com/yue-script/checks/raw/master/check_git_history.sh)
+
+lines-length:
+  stage: commit
+  script:
+    - >
+      bash <(curl -s
+      https://gitlab.com/yue-script/checks/raw/master/check_lines_length.sh)
+      80 avatar.png
+
+# syntax
+dockerfile-lint:
+  stage: syntax
+  image: vpgrp/linter:docker
+  script:
+    - dockerfile-lint Dockerfile
+# EOF
